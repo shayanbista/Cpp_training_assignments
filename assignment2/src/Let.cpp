@@ -1,6 +1,7 @@
-#include "../include/Let.h"
 #include <iostream>
 #include <cstring>
+#include <sstream> 
+#include "../include/Let.h"
 
 Let::Let(const char* s) : type(DATATYPE::STRING) {
     std::cout << s << "\n";
@@ -26,15 +27,27 @@ Let::~Let() {
 }
 
 Let& Let::operator+=(int num) {
-    if (type == DATATYPE::NUMBER) {
-        m_nRes += num;
+    if (type == DATATYPE::STRING) {
+        std::ostringstream oss;
+        oss << num;
+        m_sRes = strcat(m_sRes, oss.str().c_str()); 
+    } else if (type == DATATYPE::NUMBER) {
+        m_nRes += num;  
+    } else if (type == DATATYPE::FLOAT) {
+        m_dRes += num;  
     }
     return *this;
 }
 
 Let& Let::operator+=(double num) {
-    if (type == DATATYPE::FLOAT) {
-        m_dRes += num;
+    if (type == DATATYPE::STRING) {
+        std::ostringstream oss;
+        oss << num;
+        m_sRes = strcat(m_sRes, oss.str().c_str());  
+    } else if (type == DATATYPE::NUMBER) {
+        m_nRes += num;  
+    } else if (type == DATATYPE::FLOAT) {
+        m_dRes += num; 
     }
     return *this;
 }
@@ -47,9 +60,16 @@ Let& Let::operator+=(const char* s) {
         strcat(temp, s);
         delete[] m_sRes;
         m_sRes = temp;
+    } else if (type == DATATYPE::NUMBER) {
+        std::istringstream oss(s);
+        oss >> m_nRes;
+    } else if (type == DATATYPE::FLOAT) {
+        std::istringstream oss(s);
+        oss >> m_dRes;
     }
     return *this;
 }
+
 
 bool Let::operator==(const Let& other) {
 
