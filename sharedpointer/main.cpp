@@ -1,20 +1,12 @@
-    
-    public:
-        int *refCount;
-
-        SharedPointer<T>(T* p=nullptr):m_ptr(p), refCount(new int(1)){
-                m_ptr=p;
-                if(m_ptr){ 
-                refCount=new int(1);
-                }
-                cout<<"ref_count: "<<*refCount<<"\n";
-        }
+#include<iostream>
+#include "./include/shared.h"
 
 
-        SharedPointer& operator=(SharedPointer<T> &other){
-            if(this ==&other) return *this;
-            cout<<"i am called"<<"\n";
-            (*refCount)++;
-            cout<<"reference count: "<<*refCount<<"\n";
-            return *this;
-        }
+int main() {
+    std::cout << "Creating first shared pointer\n";
+    SharedPointer<int> ptr1(new int(42));
+    SharedPointer<int> ptr2=ptr1;
+    SharedPointer<int> ptr3=ptr1;
+    std::cout << "\nLeaving main - ptr1 will be destroyed\n";
+    return 0;
+}
