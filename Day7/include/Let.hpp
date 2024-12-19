@@ -3,13 +3,18 @@
 
 #include "../include/Variant.hpp"
 #include "../include/Datatype.hpp"
+#include "../include/Linkedlist.hpp"
 
+#include <vector>
+
+//Forward declaration of classes
 class Variant;
+class LinkedList;
 
 
 class Let{
     public:
-        DATATYPE m_type; 
+        DATATYPE m_type;
         Let(std::initializer_list<Variant> variants); 
         Let(int x);
         Let(double x); 
@@ -24,7 +29,6 @@ class Let{
        
         void display();
 
-        
         // destructor
         ~Let();
 
@@ -33,6 +37,7 @@ class Let{
         double m_dRes = 0;
         bool m_bRes = false;
         char* m_sRes ;
+        std::vector<Variant> m_variants; 
 
 };
 

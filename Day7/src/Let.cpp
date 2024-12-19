@@ -22,11 +22,12 @@ Let::Let(double s) : m_type(DATATYPE::FLOAT) {
 }
 
 
-Let::Let(std::initializer_list<Variant> variants) : m_type(DATATYPE::LIST) {
-    for(auto& v : variants){
-        std::cout<<"vavlue"<<v<<"\n";
+Let::Let(std::initializer_list<Variant> variants) : m_type(DATATYPE::LIST), m_variants(variants) {
+    for (auto& v : m_variants) {
+        std::cout << "Variant added: " << v << "\n"; 
     }
 }
+
 
 Let::~Let() {
     if (m_type == DATATYPE::STRING) {

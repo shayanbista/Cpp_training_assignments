@@ -9,7 +9,11 @@
 #include "../include/Datatype.hpp"
 
 
-Variant::Variant() = delete;
+// Variant::Variant() = delete;
+
+Variant::Variant() = {
+    cout<<"this is a variant"<<"\n";
+}
 
 Variant::Variant(int value) : m_type(DATATYPE::NUMBER), m_nRes(value), m_sRes(nullptr) {
     std::cout << "integer is called: " << value << std::endl;
