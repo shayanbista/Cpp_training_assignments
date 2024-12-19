@@ -62,16 +62,7 @@ Node::Node(const Variant& v) : v(v), next(nullptr) {}
 // LinkedList implementations
 LinkedList::LinkedList() : head(nullptr) {}
 
-// LinkedList::~LinkedList() {
-//     while (head) {
-//         Node* temp = head;
-//         head = std::make_sharedhead->next;
-//         delete temp;
-//     }
-// }
-
 void LinkedList::insert(const Variant& other) {
-    // Node* node = new Node(other);
     auto node=std::make_shared<Node>(other);
         
     if (head) {
