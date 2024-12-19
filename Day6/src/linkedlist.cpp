@@ -13,10 +13,9 @@ Variant::Variant(double value) : m_type(DATATYPE::FLOAT), m_dRes(value), m_sRes(
     std::cout << "double is called " << value << std::endl;
 }
 
-Variant::Variant(const char* value) : m_type(DATATYPE::STRING) {
-    // m_sRes=std::make_shared<char[]>(new char[strlen(value) + 1]);
-    m_sRes = std::shared_ptr<char[]>(new char[strlen(value) + 1], std::default_delete<char[]>());
-    strcpy(m_sRes.get(), value);
+Variant::Variant(const char* s) : m_type(DATATYPE::STRING) {
+    m_sRes = std::shared_ptr<char[]>(new char[strlen(s) + 1], std::default_delete<char[]>());
+    strcpy(m_sRes.get(), s);
 }
 
 Variant::Variant(const Variant& other): 
@@ -25,7 +24,6 @@ Variant::Variant(const Variant& other):
     m_dRes(other.m_dRes), 
     m_sRes(nullptr) {
     if (other.m_type == DATATYPE::STRING && other.m_sRes) {
-        // m_sRes=std::make_shared<char[]>(new char[strlen(other.m_sRes.get()) + 1]);
         m_sRes = std::shared_ptr<char[]>(new char[strlen(other.m_sRes.get()) + 1], std::default_delete<char[]>());
         strcpy(m_sRes.get(), other.m_sRes.get());
     }
@@ -39,7 +37,6 @@ Variant& Variant::operator=(const Variant& other) {
     m_dRes = other.m_dRes;
 
     if (other.m_type == DATATYPE::STRING && other.m_sRes) {
-        // m_sRes=std::make_shared<char[]>(new char[strlen(other.m_sRes.get())]+1);
         m_sRes = std::shared_ptr<char[]>(new char[strlen(other.m_sRes.get()) + 1], std::default_delete<char[]>());
         strcpy(m_sRes.get(), other.m_sRes.get());
     }

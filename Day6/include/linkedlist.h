@@ -14,6 +14,8 @@ enum class DATATYPE {
 
 class Variant {
 public:
+    DATATYPE m_type;
+
     Variant();
     Variant(int value);
     Variant(double value);
@@ -24,14 +26,11 @@ public:
     double getFloatValue() const;
     const char* getCharacters() const;
 
-    // Allow LinkedList can access m_type in display()
-    friend class LinkedList;  
-
 private:
     int m_nRes;
     double m_dRes;   
     std::shared_ptr<char[]> m_sRes;
-    DATATYPE m_type;
+   
 };
 
 struct Node {
