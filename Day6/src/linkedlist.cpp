@@ -62,19 +62,20 @@ Node::Node(const Variant& v) : v(v), next(nullptr) {}
 // LinkedList implementations
 LinkedList::LinkedList() : head(nullptr) {}
 
-LinkedList::~LinkedList() {
-    while (head) {
-        Node* temp = head;
-        head = head->next;
-        delete temp;
-    }
-}
+// LinkedList::~LinkedList() {
+//     while (head) {
+//         Node* temp = head;
+//         head = std::make_sharedhead->next;
+//         delete temp;
+//     }
+// }
 
 void LinkedList::insert(const Variant& other) {
-    Node* node = new Node(other);
-
+    // Node* node = new Node(other);
+    auto node=std::make_shared<Node>(other);
+        
     if (head) {
-        Node* tempNode = head;
+        std::shared_ptr<Node> tempNode = head;
         while (tempNode->next) {
             tempNode = tempNode->next;
         }
@@ -86,7 +87,8 @@ void LinkedList::insert(const Variant& other) {
 }
 
 void LinkedList::display() {
-    Node* temp = head;
+
+    std::shared_ptr<Node> temp=head;
     while (temp) {
         switch (temp->v.m_type) {
             case DATATYPE::NUMBER:

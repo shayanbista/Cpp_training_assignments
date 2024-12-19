@@ -35,19 +35,19 @@ private:
 
 struct Node {
     Variant v;
-    Node* next;
+    std::shared_ptr<Node> next;
+    // Node* next;
     Node(const Variant& v);  
 };
 
 class LinkedList{
 public:
     LinkedList();
-    ~LinkedList();
     void insert(const Variant& other);
     void display();
 
 private:
-    Node* head;
+    std::shared_ptr<Node> head;
 };
 
 #endif // LINKEDLIST_H
