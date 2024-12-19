@@ -1,9 +1,7 @@
 #include "../include/linkedlist.h"
 
 // Variant implementations
-Variant::Variant() : m_sRes(nullptr) {
-    std::cout << "this is a default constructor" << std::endl;
-}
+Variant::Variant() = delete;
 
 Variant::Variant(int value) : m_type(DATATYPE::NUMBER), m_nRes(value), m_sRes(nullptr) {
     std::cout << "integer is called: " << value << std::endl;
