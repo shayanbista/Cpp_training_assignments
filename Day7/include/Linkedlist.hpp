@@ -6,15 +6,12 @@
 #include <cstring>
 
 #include "../include/Datatype.hpp"
-#include "../include/Variant.hpp"
-
-// Forward declaration
-class Variant;
 
 struct Node {
     Variant v;
     Node* next;
-    Node(const Variant& v);
+    // Node(const Variant& v);
+    Node(const Variant& v) : v(v), next(nullptr) {}
 };
 
 class LinkedList {

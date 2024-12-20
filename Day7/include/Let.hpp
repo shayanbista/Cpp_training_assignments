@@ -1,11 +1,8 @@
 #ifndef VAR_H
 #define VAR_H
 
-#include "../include/Variant.hpp"
-#include "../include/Datatype.hpp"
-#include "../include/Linkedlist.hpp"
-
 #include <vector>
+#include "../include/Datatype.hpp"
 
 //Forward declaration of classes
 class Variant;
