@@ -36,7 +36,6 @@ private:
 struct Node {
     Variant v;
     std::shared_ptr<Node> next;
-    // Node* next;
     Node(const Variant& v);  
 };
 

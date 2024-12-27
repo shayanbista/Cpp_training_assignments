@@ -2,6 +2,7 @@
 #include <cstring>
 #include <sstream> 
 #include "../include/Let.h"
+#include "Let.hpp"
 
 Let::Let(const char* s) : type(DATATYPE::STRING) {
     std::cout << s << "\n";
